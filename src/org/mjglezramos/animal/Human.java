@@ -2,6 +2,7 @@ package org.mjglezramos.animal;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import org.mjglezramos.data.AnimalData;
@@ -52,6 +53,27 @@ public abstract class Human implements IAnimal{
 	@Override
 	public Set<Historial> getHistorial(IAnimal animal) {		
 		return historials;
+	}
+	
+	/**
+	 * Get an Skill by name
+	 * @param skill
+	 * @return
+	 */
+	public Skills getAnSkill(String skill) {
+		Skills result = null;
+		boolean finded = false;
+		Iterator<Skills> iterator = this.skills.iterator();
+		
+		while (iterator.hasNext() 
+				&& !finded) {
+			Skills aux = iterator.next();			
+			if (aux.getSkillTitle().equalsIgnoreCase(skill)) {
+				result = aux;
+				finded = true;
+			}
+		}
+		return result;
 	}
 	
 	/**
